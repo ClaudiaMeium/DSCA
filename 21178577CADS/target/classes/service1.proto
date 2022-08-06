@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.service1";
+option java_outer_classname = "Service1Impl";
+
+package service1;
+
+// Interface exported by the server.
+service Service1 {
+  //unary
+  rpc authoriseEntry(EntryRequest) returns (EntryResponse) {}
+  
+  //server streaming
+  rpc entryLogCheck(EntryLogRequest) returns (stream EntryLogResponse) {}
+}
+
+message EntryRequest {
+  string request = 1;
+}
+
+message EntryResponse {
+  bool authorised = 1;
+}
+
+message EntryLogRequest {
+	string request = 1;
+}
+
+message EntryLogResponse {
+	string response = 1;
+}
+

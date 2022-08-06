@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.service3";
+option java_outer_classname = "Service3Impl";
+
+package service3;
+
+// Interface exported by the server.
+service Service3 {
+
+  //client streaming
+  rpc motionSensor(stream SensorRequest) returns (SensorResponse) {}
+
+  //server streaming
+  rpc sensorLogCheck(SensorLogRequest) returns (stream SensorLogResponse) {}
+    
+}
+
+message SensorRequest {
+  bool noDisturbance = 1;
+}
+
+message SensorResponse {
+  string response = 1;
+}
+
+message SensorLogRequest {
+  string request = 1;
+}
+
+message SensorLogResponse {
+  string response = 1;
+}
+

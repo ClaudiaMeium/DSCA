@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ds.service2";
+option java_outer_classname = "Service2Impl";
+
+package service2;
+
+// Interface exported by the server.
+service Service2 {
+
+  //bidirectional streaming
+  rpc tempModifier(stream TempRequest) returns (stream TempResponse) {}
+
+  //bidirectional streaming
+  rpc humidModifier(stream HumidRequest) returns (stream HumidResponse) {}
+
+  //bidirectional streaming
+  rpc lightModifier(stream LightRequest) returns (stream LightResponse) {}
+
+  //unary
+  rpc tempStatusCheck (TempStatRequest) returns (TempStatResponse) {}
+
+  //unary
+  rpc humidStatusCheck (HumidStatRequest) returns (HumidStatResponse) {}
+
+  //unary
+  rpc lightStatusCheck (LightStatRequest) returns (LightStatResponse) {}
+  
+}
+
+message TempRequest {
+  int64 request = 1;
+}
+
+message TempResponse {
+  int64 reponse = 1;
+}
+
+message HumidRequest {
+  int64 request = 1;
+}
+
+message HumidResponse {
+  int64 response = 1;
+}
+
+message LightRequest {
+  int64 request = 1;
+}
+
+message LightResponse {
+  int64 response = 1;
+}
+
+message TempStatRequest {
+  string request = 1;
+}
+
+message TempStatResponse {
+  int64 reponse = 1;
+}
+
+message HumidStatRequest {
+  string request = 1;
+}
+
+message HumidStatResponse {
+  int64 response = 1;
+}
+
+message LightStatRequest {
+  string request = 1;
+}
+
+message LightStatResponse {
+  int64 response = 1;
+}
+
